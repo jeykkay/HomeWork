@@ -45,8 +45,8 @@ class Car(Transport):
 
 duck = Duck()
 tiger = Tiger()
-car = Car()
+car1 = Car()
 
 print(duck.move(), duck.voice())
 print(tiger.move(), tiger.voice())
-print(car.launch(), car.move())
+print(car1.launch(), car1.move())
