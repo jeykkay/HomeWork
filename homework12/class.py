@@ -35,7 +35,7 @@ class Car(Transport):
 
     def move(self):
         if self.status == 'started':
-            return 'drives'
+            return 'drive'
         return 'car is not started'
 
     def launch(self):
