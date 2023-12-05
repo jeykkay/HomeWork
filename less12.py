@@ -30,8 +30,8 @@ class Tiger(Animal):
 
 
 class Car(Transport):
-    def __init__(self, status='not_started'):
-        self.status = status
+    def __init__(self):
+        self.status = 'not_started'
 
     def move(self):
         if self.status == 'started':
@@ -39,7 +39,7 @@ class Car(Transport):
         return 'car is not started'
 
     def launch(self):
-        self.status = 'started'
+        self.status = 'not_started'
         return 'launch'
 
 
