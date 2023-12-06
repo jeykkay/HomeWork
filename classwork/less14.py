@@ -24,6 +24,6 @@ class MyHashMap:
 hm = MyHashMap()
 hm.put(1, 34)
 hm.put(2, 34)
-hm.put(34, 2)
+hm.put(32, 2)
 print(hm.map)
 print(hm.get(2))
