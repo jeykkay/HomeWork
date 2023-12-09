@@ -45,6 +45,6 @@ class DataStorageWrite(DataStorage):
 dsw = DataStorageWrite('my.json')
 dsw.connect()
 print(dsw.content)
-dsw.append('some')
+dsw.append('some text')
 dsw.disconnect()
 dsw.connect()
