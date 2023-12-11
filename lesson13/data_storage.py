@@ -1,50 +1,52 @@
+import json
+
+
 class DataStorage:
-    def __init__(self, path_to_file):
-        self.__path = path_to_file
-        self.status = 'disconnect'
-        self.content = None
-        self.file = None
+    def __init__(self, path_to_file, status='disconnected', content=None):
+        self._path = path_to_file
+        self.status = status
+        self.content = content
+        self._file = None
 
     @property
     def path(self):
-        return self.__path
+        return self._path
 
     def _create_storage(self):
-        self.file = open(self.path, 'w')
-        return self.file
+        self._file = open(self._path, 'w')
+        return self._file
 
     def connect(self):
-        try:
-            self.file = open(self.path, 'r')
-            self.status = 'connect'
-            self.content = self.file.read()
-            return self.file
-        except FileNotFoundError:
-            self._create_storage()
-            self.status = 'connect'
-            return self.file
+        if self.status == 'disconnected':
+            try:
+                self._file = open(self._path, 'r')
+                self.status = 'connect'
+                self.content = self._file.read()
+            except FileNotFoundError:
+                self._create_storage()
+        return self._file
 
     def disconnect(self):
-        self.file.close()
-        print('File closed')
+        if self.status == 'connected':
+            self._file.close()
+            self.status = 'disconnected'
+            print('File closed')
 
 
 class DataStorageWrite(DataStorage):
     def connect(self):
-        super().connect()
-        self.disconnect()
-        self.file = open(self.path, 'a+')
+        if self.status == 'disconnected':
+            try:
+                self._file = open(self._path, 'a')
+                self.status = 'connected'
+            except FileNotFoundError:
+                self._create_storage()
+        return self._file
 
     def _create_storage(self):
-        super()._create_storage()
+        return open(self._path, 'a')
 
     def append(self, _content):
-        self.file.write(_content)
-
-
-dsw = DataStorageWrite('my.json')
-dsw.connect()
-print(dsw.content)
-dsw.append('some')
-dsw.disconnect()
-dsw.connect()
+        with self.connect() as file:
+            json.dump(_content, file)
+            self.disconnect()
