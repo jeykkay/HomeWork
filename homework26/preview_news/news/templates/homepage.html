@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ Title }}</title>
+     <link rel="stylesheet" href="{% static 'css/style.css'%}" type="text/css">
+</head>
+<body>
+    <form action="/sorting-news/">
+        <select name="name_sorting" id="">
+            <option value="views">Views</option>
+            <option value="rating">Rating</option>
+            <option value="date">Date</option>
+        </select>
+        <select name="priority_sorting" id="">
+            <option value="">От последней</option>
+            <option value="-">От первой</option>
+        </select>
+        <button>Sort</button>
+    </form>
+    <section class="section-news">
+        {% for n in news %}
+        <h1>{{ n.title }}</h1>
+        <div class="images">
+            <img src="{{ n.image.url }}" alt="{{ n.title }}" width="200" height="200">
+        </div>
+        <a href="">
+            <h2>{{ n.content |slice:":100" }}</h2>
+        </a>
+        <p>{{ n.date }}</p>
+        {% endfor %}
+    </section>
+</body>
+</html>
