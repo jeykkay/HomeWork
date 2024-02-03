@@ -7,6 +7,7 @@ from news.models import News, Comment
 class NewsAdmin(admin.ModelAdmin):
     list_display = ['title', 'image', 'content', 'date', ]
     list_filter = ['date', ]
+    search_fields = ['title', 'date', ]
 
 
 @admin.register(Comment)
