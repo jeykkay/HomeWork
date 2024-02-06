@@ -1,0 +1,16 @@
+h1
+{
+    color: darkcyan;
+    text-align: center;
+}
+
+h2:hover
+{
+    color: darkcyan;
+}
+
+h2
+{
+    border-bottom: 2px solid black;
+    text-decoration-line: inherit;
+}
