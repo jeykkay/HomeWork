@@ -11,8 +11,8 @@ class AutoAdmin(admin.ModelAdmin):
 
 @admin.register(ModelAuto)
 class ModelAutoAdmin(admin.ModelAdmin):
-    list_display = ('name', 'logo_brand_auto', 'count_auto')
-    list_filter = ('logo_brand_auto', )
+    list_display = ('name', 'name_brand_auto')
+    list_filter = ('name_brand_auto', )
     ordering = ('name', )
 
 

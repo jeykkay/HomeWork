@@ -14,8 +14,7 @@ class Auto(models.Model):
 
 class ModelAuto(models.Model):
     name = models.CharField(max_length=255)
-    logo_brand_auto = models.ForeignKey('BrandAuto', on_delete=models.CASCADE)
-    count_auto = models.IntegerField(default=0)
+    name_brand_auto = models.ForeignKey('BrandAuto', on_delete=models.CASCADE)
 
 
 class BrandAuto(models.Model):
