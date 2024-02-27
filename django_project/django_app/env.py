@@ -1,0 +1,6 @@
+SECRET_KEY = 'django-insecure-qb-9$#70pag2+u#5_em@8(+cp39b+ag%@5u9)n(0nors@t+x%u'
+POSTGRES_DATABASE_NAME = 'less21_db'
+POSTGRES_USER = 'less21'
+POSTGRES_PASSWORD = '123456'
+POSTGRES_HOST = '127.0.0.1'
+POSTGRES_PORT = '5432'
